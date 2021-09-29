@@ -20,7 +20,7 @@ async function run() {
                 CREATE TABLE films (
                     id SERIAL PRIMARY KEY NOT NULL,
                     title VARCHAR(512) NOT NULL,
-                    original_title VARCHAR(512) NOT NULL,
+                    original_title_romanised VARCHAR(512) NOT NULL,
                     description VARCHAR(1024) NOT NULL,
                     director VARCHAR(512) NOT NULL,
                     producer VARCHAR(512) NOT NULL,
@@ -28,7 +28,7 @@ async function run() {
                     running_time INTEGER NOT NULL,
                     rt_score INTEGER NOT NULL,
                     img VARCHAR(512) NOT NULL,
-                    miyazaki VARCHAR(512) NOT NULL,
+                    miyazaki BOOLEAN NOT NULL,
                     category VARCHAR(512) NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
             );

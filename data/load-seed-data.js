@@ -27,11 +27,11 @@ async function run() {
     await Promise.all(
       films.map(film => {
         return client.query(`
-                    INSERT INTO films (title, original_title, description, director, producer, release_date, running_time, rt_score, img, miyazaki, category, owner_id)
+                    INSERT INTO films (title, original_title_romanised, description, director, producer, release_date, running_time, rt_score, img, miyazaki, category, owner_id)
                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
                     RETURNING *;
                 `,
-        [film.title, film.original_title, film.description, film.director, film.producer, film.release_date, film.running_time, film.rt_score, film.img, film.miyazaki, film.category, user.id]);
+        [film.title, film.original_title_romanised, film.description, film.director, film.producer, film.release_date, film.running_time, film.rt_score, film.img, film.miyazaki, film.category, user.id]);
       })
     );
     
