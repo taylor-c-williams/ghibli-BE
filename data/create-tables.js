@@ -21,7 +21,7 @@ async function run() {
                     id SERIAL PRIMARY KEY NOT NULL,
                     title VARCHAR(512) NOT NULL,
                     original_title VARCHAR(512) NOT NULL,
-                    description VARCHAR(512) NOT NULL,
+                    description VARCHAR(1024) NOT NULL,
                     director VARCHAR(512) NOT NULL,
                     producer VARCHAR(512) NOT NULL,
                     release_date INTEGER NOT NULL,
