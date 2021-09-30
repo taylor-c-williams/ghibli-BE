@@ -152,5 +152,23 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
+
+    test('Posts an item', async() => {
+      const data = await fakeRequest(app)
+        .post('/films')
+        .send({
+          id: expect.any(Number),
+          owner_id: 1,
+          title: 'dingus',
+          original_title_romanised:'bongos'
+        })
+        .expect(data.body).toEqual({
+          id: expect.any(Number),
+          owner_id: 1,
+          title: 'dingus',
+          original_title_romanised:'bongos'
+        });
+      expect(200);
+    });
   });
 });
