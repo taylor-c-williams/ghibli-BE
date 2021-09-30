@@ -154,20 +154,41 @@ describe('app routes', () => {
     });
 
     test('Posts an item', async() => {
+      const expectation = {
+        id: 2,
+        owner_id: 1,
+        title: 'Castle in the Sky',
+        original_title_romanised: 'Tenkū no shiro Rapyuta',
+        description: 'The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa\'s science to make himself ruler of the world.',
+        director: 'Hayao Miyazaki',
+        producer: 'Isao Takahata',
+        release_date: 1986,
+        running_time: 124,
+        rt_score: 95,
+        img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
+        miyazaki: true,
+        category: 'film'
+      };
+
       const data = await fakeRequest(app)
         .post('/films')
         .send({
-          id: expect.any(Number),
+          id: 2,
           owner_id: 1,
-          title: 'dingus',
-          original_title_romanised:'bongos'
+          title: 'Castle in the Sky',
+          original_title_romanised: 'Tenkū no shiro Rapyuta',
+          description: 'The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa\'s science to make himself ruler of the world.',
+          director: 'Hayao Miyazaki',
+          producer: 'Isao Takahata',
+          release_date: 1986,
+          running_time: 124,
+          rt_score: 95,
+          img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
+          miyazaki: true,
+          category: 'film'
         })
-        .expect(data.body).toEqual({
-          id: expect.any(Number),
-          owner_id: 1,
-          title: 'dingus',
-          original_title_romanised:'bongos'
-        });
+        .expect('Content-Type', /json/);
+      expect(data.body).toEqual(expectation);
       expect(200);
     });
   });
