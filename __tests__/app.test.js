@@ -219,7 +219,7 @@ describe('app routes', () => {
         .expect('Content-Type', /json/)
         .expect(200);
 
-    
+      expect(data.body).toEqual('');
 
       const films = await fakeRequest(app)
         .get ('/films');
