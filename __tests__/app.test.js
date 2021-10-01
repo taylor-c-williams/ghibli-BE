@@ -155,7 +155,7 @@ describe('app routes', () => {
 
     test('Posts an item', async() => {
       const expectation = {
-        id: 2,
+        id:expect.any(Number),
         owner_id: 1,
         title: 'Castle in the Sky',
         original_title_romanised: 'Tenkū no shiro Rapyuta',
@@ -173,7 +173,6 @@ describe('app routes', () => {
       const data = await fakeRequest(app)
         .post('/films')
         .send({
-          id: 2,
           owner_id: 1,
           title: 'Castle in the Sky',
           original_title_romanised: 'Tenkū no shiro Rapyuta',
@@ -186,10 +185,10 @@ describe('app routes', () => {
           img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
           miyazaki: true,
           category: 'film'
-        })
-        .expect('Content-Type', /json/);
-      expect(data.body).toEqual(expectation);
+        });
       expect(200);
+
+      expect(data.body).toEqual(expectation);
     });
   });
 });
