@@ -28,6 +28,7 @@ describe('app routes', () => {
       return client.end(done);
     });
 
+    // Get All
     test('returns films', async() => {
 
       const expectation = [
@@ -117,7 +118,6 @@ describe('app routes', () => {
         }
       ];
       
-
       const data = await fakeRequest(app)
         .get('/films')
         .expect('Content-Type', /json/)
@@ -126,6 +126,8 @@ describe('app routes', () => {
       expect(data.body).toEqual(expectation);
     });
 
+
+    //Get By ID
     test('returns single film by id', async() => {
 
       const expectation = { 
@@ -151,6 +153,78 @@ describe('app routes', () => {
         .expect(200);
 
       expect(data.body).toEqual(expectation);
+    });
+
+
+    // Post 
+    test('Posts an item', async() => {
+      const expectation = {
+        id:expect.any(Number),
+        owner_id: 1,
+        title: 'Castle in the Sky',
+        original_title_romanised: 'Tenkū no shiro Rapyuta',
+        description: 'The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa\'s science to make himself ruler of the world.',
+        director: 'Hayao Miyazaki',
+        producer: 'Isao Takahata',
+        release_date: 1986,
+        running_time: 124,
+        rt_score: 95,
+        img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
+        miyazaki: true,
+        category: 'film'
+      };
+
+      const data = await fakeRequest(app)
+        .post('/films')
+        .send({
+          owner_id: 1,
+          title: 'Castle in the Sky',
+          original_title_romanised: 'Tenkū no shiro Rapyuta',
+          description: 'The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa\'s science to make himself ruler of the world.',
+          director: 'Hayao Miyazaki',
+          producer: 'Isao Takahata',
+          release_date: 1986,
+          running_time: 124,
+          rt_score: 95,
+          img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
+          miyazaki: true,
+          category: 'film'
+        });
+      expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
+
+    // Delete
+    test('Deletes an item', async() => {
+      const expectation = {
+        id:1,
+        owner_id: 1,
+        title: 'Castle in the Sky',
+        original_title_romanised: 'Tenkū no shiro Rapyuta',
+        description: 'The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa\'s science to make himself ruler of the world.',
+        director: 'Hayao Miyazaki',
+        producer: 'Isao Takahata',
+        release_date: 1986,
+        running_time: 124,
+        rt_score: 95,
+        img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
+        miyazaki: true,
+        category: 'film'
+      };
+
+      const data = await fakeRequest(app)
+        .delete('/films/1')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual('');
+
+      const films = await fakeRequest(app)
+        .get ('/films');
+      
+      expect(films.body).toEqual(expect.not.arrayContaining([expectation]));    
     });
   });
 });
