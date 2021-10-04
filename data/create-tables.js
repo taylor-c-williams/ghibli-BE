@@ -16,7 +16,17 @@ async function run() {
         id SERIAL PRIMARY KEY,
         email VARCHAR(256) NOT NULL,
         hash VARCHAR(512) NOT NULL
-      );           
+      );       
+      
+      CREATE TABLE details (
+        id SERIAL PRIMARY KEY NOT NULL,
+        release_date INTEGER NOT NULL,
+        running_time INTEGER NOT NULL,
+        rt_score INTEGER NOT NULL,
+        miyazaki BOOLEAN NOT NULL,
+        category VARCHAR(512) NOT NULL
+      );
+
       CREATE TABLE films (
         id SERIAL PRIMARY KEY NOT NULL,
         title VARCHAR(512) NOT NULL,
@@ -24,19 +34,11 @@ async function run() {
         description VARCHAR(1024) NOT NULL,
         director VARCHAR(512) NOT NULL,
         producer VARCHAR(512) NOT NULL,
-        owner_id INTEGER NOT NULL REFERENCES users(id)
-        detail_id VARCHAR(512) NOT NULL REFERENCES details(id),
+        img VARCHAR(512) NOT NULL,
+        owner_id INTEGER NOT NULL REFERENCES users(id),
+        details_id INTEGER NOT NULL REFERENCES details(id)
       );
-        CREATE TABLE details (
-          id SERIAL PRIMARY KEY NOT NULL,
-          release_date INTEGER NOT NULL,
-          running_time INTEGER NOT NULL,
-          rt_score INTEGER NOT NULL,
-          img VARCHAR(512) NOT NULL,
-          miyazaki BOOLEAN NOT NULL,
-          category VARCHAR(512) NOT NULL,
-        );
-      `);
+    `);
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());
   }
