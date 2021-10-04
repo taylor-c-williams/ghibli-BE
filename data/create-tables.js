@@ -35,8 +35,8 @@ async function run() {
         director VARCHAR(512) NOT NULL,
         producer VARCHAR(512) NOT NULL,
         img VARCHAR(512) NOT NULL,
-        owner_id INTEGER NOT NULL REFERENCES users(id),
-        details_id INTEGER NOT NULL REFERENCES details(id)
+        owner_id INTEGER REFERENCES users(id),
+        details_id INTEGER REFERENCES details(id)
       );
     `);
 
