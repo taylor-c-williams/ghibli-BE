@@ -28,7 +28,7 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    // Get All
+    // Get All Films
     test('returns films', async() => {
 
       const expectation = [
@@ -131,6 +131,20 @@ describe('app routes', () => {
       expect(data.body).toEqual(expect.arrayContaining(expectation));
     });
 
+    // Get all Categories
+    test('returns all categories', async() => {
+
+      const expectation =
+        { category:'film',
+          id: expect.any(Number) }
+      ;
+      
+      const data = await fakeRequest(app)
+        .get('/categories')
+        .expect('Content-Type', /json/)
+        .expect(200);
+      expect(data.body).toEqual(expect.arrayContaining([expectation]));  
+    });
 
     //Get By ID
     test('returns single film by id', async() => {
@@ -151,7 +165,6 @@ describe('app routes', () => {
         category:'film',
         category_id:expect.any(Number)
       };
-
 
       const data = await fakeRequest(app)
         .get('/films/1')
@@ -205,14 +218,14 @@ describe('app routes', () => {
     // Post Category
     test('Posts a category', async() => {
       const expectation = {
-       category: 'dingus',
-       id: 4
+        category: 'film',
+        id: expect.any(Number)
       };
 
       const data = await fakeRequest(app)
         .post('/categories')
         .send({
-          category:'dingus'
+          category:'film'
         });
       expect(200);
 
