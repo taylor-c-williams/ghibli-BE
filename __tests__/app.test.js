@@ -163,7 +163,7 @@ describe('app routes', () => {
 
 
     // Post 
-    test('Posts an item', async() => {
+    test('Posts a film', async() => {
       const expectation = {
         id:expect.any(Number),
         owner_id: 1,
@@ -177,7 +177,6 @@ describe('app routes', () => {
         rt_score: 95,
         img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
         miyazaki: true,
-        category: 'film',
         category_id:expect.any(Number)
       };
 
@@ -194,16 +193,12 @@ describe('app routes', () => {
           rt_score: 95,
           img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
           miyazaki: true,
-          category_id:expect.any(Number)
+          category_id:1,
+          owner_id:1
         });
       expect(200);
 
-      const allFilms = await fakeRequest(app)
-        .get('/films')
-        .expect('Content-Type', /json/)
-        .expect(200);
-
-      expect(allFilms.body).toEqual(expect.arrayContaining([expectation]));
+      expect(data.body).toEqual(expectation);
     }); 
 
 
