@@ -1,6 +1,7 @@
 const client = require('../lib/client');
 // import our seed data:
 const films = require('./films.js');
+
 const categories = require('./categories.js');
 const usersData = require('./users.js');
 const { getEmoji } = require('../lib/emoji.js');
@@ -12,18 +13,28 @@ async function run() {
   try {
     await client.connect();
 
-    const users = await Promise.all(
-      usersData.map(user => {
+    const users2 = await Promise.all(
+      usersData.map(users => {
         return client.query(`
                       INSERT INTO users (email, hash)
                       VALUES ($1, $2)
                       RETURNING *;
                   `,
-        [user.email, user.hash]);
+        [users.email, users.hash]);
       })
     );
       
-    const user = users[0].rows[0];
+    const user = users2[0].rows[0];
+
+    await Promise.all(
+      creators.map(creators => {
+        return client.query(`
+                      INSERT INTO creators (director, producer)
+                      VALUES ($1, $2);
+                  `,
+        [creators.director, creators.producer]);
+      })
+    );
 
     await Promise.all(
       categories.map(categories => {

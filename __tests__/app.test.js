@@ -136,8 +136,7 @@ describe('app routes', () => {
 
       const expectation =
         { category:'film',
-          id: expect.any(Number) }
-      ;
+          id: expect.any(Number) };
       
       const data = await fakeRequest(app)
         .get('/categories')
@@ -173,7 +172,6 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
-
 
     // Post film
     test('Posts a film', async() => {
@@ -213,7 +211,6 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     }); 
-
 
     // Post Category
     test('Posts a category', async() => {

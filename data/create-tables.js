@@ -12,6 +12,7 @@ async function run() {
     
     // run a query to create tables
     await client.query(`
+
     CREATE TABLE users (
       id SERIAL PRIMARY KEY,
       email VARCHAR(256) NOT NULL,
@@ -48,5 +49,4 @@ async function run() {
     // success or failure, need to close the db connection
     client.end();
   }
-
 }
