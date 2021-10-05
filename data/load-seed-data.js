@@ -41,7 +41,7 @@ async function run() {
                     INSERT INTO films (title, original_title_romanised, description, release_date, running_time, rt_score, img, miyazaki, category, owner_id, creators_id)
                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
                 `,
-        [film.title, film.original_title_romanised, film.description, film.release_date, film.running_time, film.rt_score, film.img, film.miyazaki, film.category, film.owner_id, user.id]);
+        [film.title, film.original_title_romanised, film.description, film.release_date, film.running_time, film.rt_score, film.img, film.miyazaki, film.category, user.id, creators.id]);
       })
     );
  
