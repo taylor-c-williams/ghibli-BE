@@ -16,21 +16,25 @@ async function run() {
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
-                );           
+                ); 
+                CREATE TABLE creators (
+                  id SERIAL PRIMARY KEY,
+                  director VARCHAR(512) NOT NULL,
+                  producer VARCHAR(512) NOT NULL                  
+                );          
                 CREATE TABLE films (
                     id SERIAL PRIMARY KEY NOT NULL,
                     title VARCHAR(512) NOT NULL,
                     original_title_romanised VARCHAR(512) NOT NULL,
                     description VARCHAR(1024) NOT NULL,
-                    director VARCHAR(512) NOT NULL,
-                    producer VARCHAR(512) NOT NULL,
                     release_date INTEGER NOT NULL,
                     running_time INTEGER NOT NULL,
                     rt_score INTEGER NOT NULL,
+                    category VARCHAR(512) NOT NULL,
                     img VARCHAR(512) NOT NULL,
                     miyazaki BOOLEAN NOT NULL,
-                    category VARCHAR(512) NOT NULL,
-                    owner_id INTEGER NOT NULL REFERENCES users(id)
+                    owner_id INTEGER  REFERENCES users(id),
+                    creators_id INTEGER REFERENCES creators(id)
             );
         `);
 
@@ -44,5 +48,4 @@ async function run() {
     // success or failure, need to close the db connection
     client.end();
   }
-
 }
