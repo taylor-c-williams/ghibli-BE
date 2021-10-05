@@ -128,38 +128,38 @@ describe('app routes', () => {
         .get('/films')
         .expect('Content-Type', /json/)
         .expect(200);
-
       expect(data.body).toEqual(expect.arrayContaining(expectation));
     });
 
 
     //Get By ID
-    // test('returns single film by id', async() => {
+    test('returns single film by id', async() => {
 
-    // const expectation = { 
-    //   id: 1,
-    //   owner_id:1,
-    //   title: 'Castle in the Sky',
-    //   original_title_romanised: 'Tenkū no shiro Rapyuta',
-    //   description: 'The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa\'s science to make himself ruler of the world.',
-    //   director: 'Hayao Miyazaki',
-    //   producer: 'Isao Takahata',
-    //   release_date: 1986,
-    //   running_time: 124,
-    //   rt_score: 95,
-    //   img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
-    //   miyazaki: true,
-    //   category_id:expect.any(Number)
-    // };
+      const expectation = { 
+        id: 1,
+        owner_id:1,
+        title: 'Castle in the Sky',
+        original_title_romanised: 'Tenkū no shiro Rapyuta',
+        description: 'The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa\'s science to make himself ruler of the world.',
+        director: 'Hayao Miyazaki',
+        producer: 'Isao Takahata',
+        release_date: 1986,
+        running_time: 124,
+        rt_score: 95,
+        img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
+        miyazaki: true,
+        category:'film',
+        category_id:expect.any(Number)
+      };
 
 
-    //   const data = await fakeRequest(app)
-    //     .get('/films/1')
-    //     .expect('Content-Type', /json/)
-    //     .expect(200);
+      const data = await fakeRequest(app)
+        .get('/films/1')
+        .expect('Content-Type', /json/)
+        .expect(200);
 
-    //   expect(data.body).toEqual(expectation);
-    // });
+      expect(data.body).toEqual(expectation);
+    });
 
 
     // Post 
