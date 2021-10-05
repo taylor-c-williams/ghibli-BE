@@ -8,7 +8,7 @@ module.exports = [
     rt_score: 95,
     img: 'https://resizing.flixster.com/jbMllx6WpeZxWEOJvx8utnodafM=/206x305/v2/https://flxt.tmsimg.com/NowShowing/20503/20503_aa.jpg',
     miyazaki: true,
-    category: 'film'
+    category_id: 1 
   },
   {
     title: 'Grave of the Fireflies',
@@ -19,7 +19,7 @@ module.exports = [
     rt_score: 97,
     img: 'https://resizing.flixster.com/Gvnl3dC2RcV6So3qnZ0Z1cbDVMg=/206x305/v2/https://flxt.tmsimg.com/assets/p158931_p_v10_aa.jpg',
     miyazaki: false,
-    category: 'film'
+    category_id: 1     
   },
   {
     title: 'My Neighbor Totoro',
@@ -30,7 +30,7 @@ module.exports = [
     rt_score: 93,
     img: 'https://resizing.flixster.com/zl240CPBBowAZfldk-8FaX4dGuw=/206x305/v2/https://flxt.tmsimg.com/NowShowing/120448/120448_aa.jpg',
     miyazaki: true,
-    category: 'film'
+    category_id: 1      
   },
   {
     title: 'Kiki\'s Delivery Service',
@@ -41,7 +41,7 @@ module.exports = [
     rt_score: 96,
     img: 'https://resizing.flixster.com/AJ-MLjKl3EoNPg9QeoYxPNNjIR8=/206x305/v2/https://resizing.flixster.com/GcW_2ZRRiHn7HbOM14sbXx1kzhM=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzI4ZDY2MTllLWQ5MzktNDVlNC04MWQ4LWVmODQ4ODZiYTRkMS53ZWJw',
     miyazaki: true,
-    category: 'film'
+    category_id: 1      
   },
   {
     title: 'Only Yesterday',
@@ -52,7 +52,7 @@ module.exports = [
     rt_score: 100,
     img: 'https://resizing.flixster.com/JlcY1vkDahvRzKHT2ceAI8fPw9o=/206x305/v2/https://resizing.flixster.com/-XQGThh0gQuxBcB6G14fPhZymhM=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzL2JlNWVkYTQ2LWVjN2EtNDE0ZS1hZjkzLTcxNzFmNzJhMTc3YS53ZWJw',
     miyazaki: false,
-    category: 'film' 
+    category_id: 1       
   },
   {
     title: 'Porco Rosso',
@@ -63,6 +63,6 @@ module.exports = [
     rt_score: 94,
     img: 'https://resizing.flixster.com/etAuWF5FCuSeKDL5FWh8PUnCpjo=/206x305/v2/https://flxt.tmsimg.com/assets/p160147_p_v10_ab.jpg',
     miyazaki: true,
-    category: 'film'
+    category_id: 1 
   }
 ];

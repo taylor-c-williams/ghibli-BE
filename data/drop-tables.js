@@ -11,7 +11,7 @@ async function run() {
     await client.query(`
             DROP TABLE IF EXISTS users CASCADE;
             DROP TABLE IF EXISTS films;
-            DROP TABLE IF EXISTS creators;
+            DROP TABLE IF EXISTS categories;
         `);
 
     console.log(' drop tables complete', getEmoji(), getEmoji(), getEmoji());
