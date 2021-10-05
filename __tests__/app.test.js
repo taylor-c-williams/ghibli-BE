@@ -162,7 +162,7 @@ describe('app routes', () => {
     });
 
 
-    // Post 
+    // Post film
     test('Posts a film', async() => {
       const expectation = {
         id:expect.any(Number),
@@ -201,6 +201,23 @@ describe('app routes', () => {
       expect(data.body).toEqual(expectation);
     }); 
 
+
+    // Post Category
+    test('Posts a category', async() => {
+      const expectation = {
+       category: 'dingus',
+       id: 4
+      };
+
+      const data = await fakeRequest(app)
+        .post('/categories')
+        .send({
+          category:'dingus'
+        });
+      expect(200);
+
+      expect(data.body).toEqual(expectation);
+    }); 
 
     // Delete
     test('Deletes an item', async() => {
