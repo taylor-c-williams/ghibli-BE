@@ -117,7 +117,6 @@ describe('app routes', () => {
         }
       ];
       
-
       const data = await fakeRequest(app)
         .get('/films')
         .expect('Content-Type', /json/)
