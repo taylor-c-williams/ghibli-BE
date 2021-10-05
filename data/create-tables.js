@@ -18,7 +18,7 @@ async function run() {
       hash VARCHAR(512) NOT NULL
       ); 
       CREATE TABLE categories (
-        id SERIAL PRIMARY KEY,
+        id SERIAL PRIMARY KEY NOT NULL,
         category VARCHAR(512) NOT NULL
         );          
         CREATE TABLE films (
@@ -33,9 +33,10 @@ async function run() {
           rt_score INTEGER NOT NULL,
           img VARCHAR(512) NOT NULL,
           miyazaki BOOLEAN NOT NULL,
-          owner_id INTEGER NOT NULL REFERENCES users(id)
+          owner_id INTEGER NOT NULL REFERENCES users(id),
+          category_id INTEGER NOT NULL REFERENCES categories(id)
           );
-          `);
+        `);
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());
   }

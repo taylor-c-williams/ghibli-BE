@@ -1,27 +1,6 @@
 module.exports = [
   {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
-  }, {
-    category: 'film'
+    category: 'film',
+    category_id:1
   }
 ];

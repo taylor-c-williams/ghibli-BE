@@ -26,25 +26,24 @@ async function run() {
     const user = users[0].rows[0];
 
     await Promise.all(
-      films.map(film => {
+      categories.map(categories => {
         return client.query(`
-                    INSERT INTO  films (title, original_title_romanised, description, director, producer, release_date, running_time, rt_score, img, miyazaki, owner_id)
-                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-                    RETURNING *;
-                `,
-        [film.title,  film.original_title_romanised,  film.description,  film.director,  film.producer,  film.release_date,  film.running_time,  film.rt_score,  film.img,  film.miyazaki, user.id]);
+                  INSERT INTO  categories (category)
+                  VALUES ($1);                  
+              `,
+        [categories.category]);
       })
     );
 
-    categories.map(category => {
-      return client.query(`
-                  INSERT INTO  categories (category)
-                  VALUES ($1)
-                  RETURNING *;
-              `,
-      [category.category]);
-    });
-    
+    await Promise.all(
+      films.map(film => {
+        return client.query(`
+                    INSERT INTO  films (title, original_title_romanised, description, director, producer, release_date, running_time, rt_score, img, miyazaki, owner_id, category_id)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
+                     `,
+        [film.title,  film.original_title_romanised,  film.description,  film.director,  film.producer,  film.release_date,  film.running_time,  film.rt_score,  film.img,  film.miyazaki, user.id, film.category_id]);
+      })
+    );
 
     console.log('seed data load complete', getEmoji(), getEmoji(), getEmoji());
   }
@@ -53,6 +52,5 @@ async function run() {
   }
   finally {
     client.end();
-  }
-    
+  }    
 }
